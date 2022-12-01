@@ -55,15 +55,19 @@ class SampleItemListView extends StatelessWidget {
               foregroundImage: AssetImage('assets/images/flutter_logo.png'),
             ),
             onTap: () {
-              // Navigate to the details page. If the user leaves and returns to
-              // the app after it has been killed while running in the
-              // background, the navigation stack is restored.
-              Navigator.restorablePushNamed(
-                context,
-                SampleItemDetailsView.routeName,
-              );
-            }
-          );
+                // Navigate to the details page.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SampleItemDetailsView(),
+                    // Pass the arguments as part of the RouteSettings. The
+                    // Details View reads the arguments from these settings.
+                    settings: RouteSettings(
+                      arguments: item,
+                    ),
+                  ),
+                );
+              });
         },
       ),
     );
